@@ -1,0 +1,14 @@
+{
+  "type": "service_account",
+  "project_id": "hatchsocial",
+  "private_key_id": "bfe3ca25886d8d6797dcd29b330b279614ed0e9f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCwYsrwzLbCy5Qs\nLLinrM3Iq0zyrnmaZtjLJaXkvtSUSJLjnas/oQtCcwgJNACOiLRqoB+t0n72tdnL\nzXyX1dpTCqVeP9eXtykaxXr6qjv1vXRtJCMn3zKbyBOYe80bK0T7ILNtKojyj9x7\n637qtNcQig3d5bl226tBNyq303CQ7A68PQXxKPTLDRMIfhujZ+Is1GJe6DlvnHMd\nor5gO52v9tq5Wnyp8NAeAVKtVVohEJfmxUPIWk+LaKUErWi3s1rnCK+w0cf0bMR9\n9SJtVwcT0XcYZbtyMZaCrSLBsHKts1l2Gxz4RXQLTWYNcmsxMf/Wy1UnIQIQSu0E\nqXSdm7Y1AgMBAAECggEAUGW3eurUoxWIBFqeEE+DvOPXvwYoB2i5iF8wroMNAknS\nKk3DsM0HBNLJ5uf9GPrWwYMa7W/0zx80luCi2dJwIUnI9pzC+DRUWA+LbpYJnoks\neFLwc0wZFUitJePIKYofdxgAsNGiem14YkOFJhYnsTI7/9imILcf6CntHr0Rofw0\nsEq6mLD3/GVhVVa2HHgRLcV0Di/6lQ9IRLv6N+7BxGi1QyIeNrpPsbysc/waLzjj\n7kpPKL7V8Je3fVt6O6ovP7cCgeLC2YyxEYOmzY1womzaGHPgpjCuzw0SAAjh//wt\nsVVVWnb4xERHy4Fyy6lBwI2/+4i7kiNRbNiFaxU8QQKBgQDliFNF8uMYF3C1euRH\n9vZsjjFoRgHxjJ/hjFCKVxfrSaMl4/7AM/Gw3EZcydy6LzkTLJvQAvX2Wgo+nZNo\n2PN8bNN8b5ok209jW+XgjYuIh37f3+CPXjODBNA9oxzy4+EIA9aSI3cTx5biQWkl\ndJ2nPtGFOdrUcUpQtsU0kv8mgwKBgQDEuZvF/0VOzoIx/qeT4uUSBY5BpFB47o6f\nYdd9xZmsM8cTwUabwD3eBbQevoNV8NsOeDkbB4AOvhKBGOstVQt3AVpXGoE6pUDw\nb+cCpv3VEiv0ASRJ4jUEjEuteWRzPA6Ic8AHViPpAyfO8JFO8sZqm/TfEUL2rjtn\nYAsJBq5S5wKBgA/TuaI+IEid/SiWY71OmylbGK8O/L1SLAgaa8dOQBj6R+Sp9vv7\n2POQDM4DIVQ5Q18+GTRbr+gfx0sQBIUbSJbQzjhrXZ6i/LNmN9CnEfMFHMuFHW/l\nV/n10AIgCDP7YJ3z3czP4zsa7R2G0yBBDUnl+/6KwbsaYLx2Dd0VMcDPAoGBAIq4\nKzz6HWBNxIcGgBqLQ2Zq3n4xJMGxzoZbEv5QSWWheT7X6jdH3xhhQzrusmP2nDFe\n2z3REx7SLvAzpxpnPtdi79Y+DWRSRTGGZwp6wMDvuGiuKW2kAii72V1xHUEY11Km\n9ID34AiePgLxpjVagkmIwapOXL7f62mg0wdBW8l/AoGAPihVSecO5kw6YE7ZnzCL\ncvBeRJMPOJfs7UUaaF4ztekaAEBjnpxkgoPUfUlOo/zJqJRMbR+MtpGi9ncwYbvG\nBnb2YvMdqfqH+rEJaCQmBSVt5cz/wMbZu6gBgP0/CQFcxvjwM8rbU3t1fqx0SFRc\nbud8wAfKD+OMlE3limItPLA=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@hatchsocial.iam.gserviceaccount.com",
+  "client_id": "106482684225546432106",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40hatchsocial.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
+ 
