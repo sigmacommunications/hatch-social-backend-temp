@@ -49,6 +49,72 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+    public function sendOtpToVerifyEmail(Request $request)
+	{
+		$validator = Validator::make($request->all(), [
+			'email' => 'required|email|exists:users,email',
+		]);
+		if ($validator->fails()) 
+		{
+        	return redirect()->back()
+            ->withErrors($validator) // Add validation errors to session
+            ->withInput();
+    	}
+
+		$user = User::where('email', $request->email)->first();
+
+		// Generate and save OTP
+		$otp = rand(100000, 999999); // 6-digit OTP
+		$user->email_code = $otp;
+		$user->save();
+
+		// Send OTP via email
+		Mail::raw("Your verification code is: $otp", function ($message) use ($user) {
+			$message->to($user->email)
+				->subject('Email Verification OTP');
+		});
+
+		// Set session flag
+		session(['otp_sent' => true, 'email' => $user->email]);
+
+		return redirect()->back()->with('success', 'OTP sent to your email.');
+	}
+	
+	public function verifyOtpAndDeleteUser(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email', 'exists:users,email'],
+            'otp'   => ['required', 'digits:6'],
+        ]);
+
+        try {
+            \DB::beginTransaction();
+
+            $user = User::where('email', $request->email)->firstOrFail();
+
+            // TODO: Yahan OTP verification logic add karein
+
+            app(\App\Services\UserDeletionService::class)
+                ->deleteUserCompletely($user);
+
+            \DB::commit();
+
+            session()->forget(['otp_sent', 'email']);
+
+            return back()->with('success', 'Account deleted successfully.');
+
+        } catch (\Throwable $e) {
+
+            \DB::rollBack();
+            Log::error('User Deletion Failed', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+
+            return back()->with('error', 'Something went wrong while deleting account.');
+        }
+    }
+
     // public function admin(Request $request)
     // {
     //     try {
@@ -110,69 +176,6 @@ class LoginController extends Controller
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
     }
-
-
-    public function sendOtpToVerifyEmail(Request $request)
-	{
-		$validator = Validator::make($request->all(), [
-			'email' => 'required|email|exists:users,email',
-		]);
-		if ($validator->fails()) 
-		{
-        	return redirect()->back()
-            ->withErrors($validator) // Add validation errors to session
-            ->withInput();
-    	}
-
-		$user = User::where('email', $request->email)->first();
-
-		// Generate and save OTP
-		$otp = rand(100000, 999999); // 6-digit OTP
-		$user->email_code = $otp;
-		$user->save();
-
-		// Send OTP via email
-		Mail::raw("Your verification code is: $otp", function ($message) use ($user) {
-			$message->to($user->email)
-				->subject('Email Verification OTP');
-		});
-
-		// Set session flag
-		session(['otp_sent' => true, 'email' => $user->email]);
-
-		return redirect()->back()->with('success', 'OTP sent to your email.');
-	}
-	
-	public function verifyOtpAndDeleteUser(Request $request)
-	{
-		$validator = Validator::make($request->all(), [
-			'email' => 'required|email|exists:users,email',
-			'otp' => 'required|digits:6',
-		]);
-
-		if ($validator->fails()) {
-			return redirect()->back()
-				->withErrors($validator)
-				->withInput();
-		}
-
-		$user = User::where('email', $request->email)
-			->where('email_code', $request->otp)
-			->first();
-
-		if (!$user) {
-			return redirect()->back()->with('error', 'Invalid OTP.');
-		}
-
-		// Soft delete the user
-        
-		$user->delete();
-
-		// Clear session
-		session()->forget(['otp_sent', 'email']);
-
-		return redirect()->back()->with('success', 'Account has been deleted.');
-	}
 
     public function logout(Request $request)
     {
